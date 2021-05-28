@@ -25,6 +25,15 @@ These are just some of the sample applications to name, however there are numero
 
 Now, lets jump in and try to understand some common nomenclature in NLP :
 
+Before we start with the Models, lets try to understand as what an ***Word embedding*** mean?
+
+***"Word embedding"*** is the concept of converting words to vectors/numbers. This is quite important as the modles can work with Numerical data.
+
+There are 2 types of embeddings :
+
+ ***1. Frequency based embedding
+ 2. Prediction based embedding***
+
  - Corpus : The set of text / words used in a sentence or an article is called corpus. For ex :- If you have a PDF document with 1000 words, then these 1000 words forms a corpus.
  - Vocabulary : The unique set of words from a corpus is called a vocabulary.
  - Tokenization : is a process of dividing the sentence or text into tokens, where-in these tokens can be characters, words or sub-words. For ex :- if the sentence is "Tokenization is the smarter technique in NLP", then this sentence can be tokenized for characters like 'T','o','k','e','n'......., where as if is tokenized for words, then we get "Tokenization,"is","the","smarter"...., However if we tokenize for sub-words, we get something like smarter can become smart and er.
@@ -170,17 +179,18 @@ Here we coudl clearly see that the importance of word tasty is more in Review 1 
 
 However 1 disadvantage we still live with is that neither the BoW nor TF-IDF would care about the semantics or context. Which is where Word2Vec is handy and useful.
 
+<h2> Prediction based embedding </h2>
 <h3> Word2Vec </h3>
 
-As mentioned above, we would want to have the weightage given to context or the order of the words rather than just a term/word in isolation. In short, we have to consider a context of a word. Word2Vec is a model, which woudl help us achieve the same using 2 methodologies :
+As mentioned above, we would want to have the weightage given to context or the order of the words rather than just a term/word in isolation. In short, we have to consider a context of a word. Word2Vec is a model, which would help us achieve the same using 2 methodologies :
 
- 1. **CBOW (Continuous Bag of Words):** In CBOW model, we would try to come up with Target word with the help of context word. For ex :- If we see the below sentence, the TARGET word is "language", which is found by using the context words around it. 
+ 1. **CBOW (Continuous Bag of Words):** In CBOW model, we would try to ***predict*** the Target word with the help of context word. For ex :- If we see the below sentence, the TARGET word is "language", which is found by using the context words around it. 
  
 ![enter image description here](https://1.bp.blogspot.com/-gjnDTyhZOmQ/XPDtkX8qtFI/AAAAAAAABtU/lxYFusQZd4UwT9E3aM_mgVj8ldFbYdcawCLcBGAs/s1600/image001.png)
  
 The model tries to predict the target word by trying to understand the context of the surrounding words. Consider the same sentence as above, ‘It is a pleasant day’.The model converts this sentence into word pairs in the form *** (contextword, targetword) ***. The user will have to set the window size. If the window for the context word is 2 then the word pairs would look like this: ([it, a], is), ([is, pleasant], a),([a, day], pleasant). With these word pairs, the model tries to predict the target word considered the context words.
 
-2. **Skip-Gram:** Unlike CBOW model, the skip-gram tries to find out the context words out of the TARGET words. Below is the simple illustration provided by Google on Word2Vec using skip gram with window size of 2 and 3.
+2. **Skip-Gram:** Unlike CBOW model, the skip-gram tries to ***predict*** the context words out of the TARGET words. Below is the simple illustration provided by Google on Word2Vec using skip gram with window size of 2 and 3.
 
 Source : https://www.tensorflow.org/tutorials/text/word2vec
 
